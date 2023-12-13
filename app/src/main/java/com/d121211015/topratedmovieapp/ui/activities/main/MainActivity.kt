@@ -52,7 +52,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column {
+                    Column (
+                    ) {
                         CenterAlignedTopAppBar(
                             modifier = Modifier.background(Color.Black),
                             title = {
@@ -81,7 +82,7 @@ class MainActivity : ComponentActivity() {
                     .size(350.dp)
                     .fillMaxSize()
                 )
-            is MainUiState.Error -> Text(text = "Terjadi Error", fontSize = 16.sp)
+            is MainUiState.Error -> Text(text = "Error", fontSize = 16.sp)
             is MainUiState.Success -> MovieList(mainUiState.movies)
         }
     }
@@ -99,8 +100,8 @@ class MainActivity : ComponentActivity() {
     fun ResultItem(result: TopMovie) {
         Box(
             modifier = Modifier
-                .padding(16.dp)
-                .border(2.dp, Color.Black, RoundedCornerShape(8.dp),)
+                .padding(20.dp)
+                .border(2.dp, Color.DarkGray, RoundedCornerShape(12.dp),)
                 .clickable {
                     val intent = Intent(this, DetailActivity::class.java)
                     intent.putExtra("MOVIE", result)
@@ -120,24 +121,26 @@ class MainActivity : ComponentActivity() {
                         .build(), contentDescription = result.title,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
+                        .height(250.dp)
                         .clip(MaterialTheme.shapes.medium),
                     contentScale = ContentScale.Crop
                 )
-
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = result.title,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = result.release_date,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyLarge
                 )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(text = result.overview, style = MaterialTheme.typography.bodyMedium)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = result.overview,
+                    style = MaterialTheme.typography.titleSmall
+                )
 
             }
         }

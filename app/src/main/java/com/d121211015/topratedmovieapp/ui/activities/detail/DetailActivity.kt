@@ -68,15 +68,16 @@ class DetailActivity : ComponentActivity() {
 
             // Movie Details
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = selectedMovie?.title.toString(), style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = selectedMovie?.release_date.toString(), style = MaterialTheme.typography.bodyLarge)
+            Text(text = selectedMovie?.title.toString(), style = MaterialTheme.typography.displayLarge, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Vote Count : ${selectedMovie?.vote_count.toString()}", style = MaterialTheme.typography.bodyLarge)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Rating: ${selectedMovie?.vote_average.toString()}", style = MaterialTheme.typography.bodyLarge)
+            Text(text = "Release Date : ${selectedMovie?.release_date.toString()}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = selectedMovie?.overview.toString(), style = MaterialTheme.typography.bodyLarge)
+            Text(text = "Vote Count : ${selectedMovie?.vote_count.toString()}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Rating: ${selectedMovie?.vote_average.toString()} / 10", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Overview", style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold)
+            Text(text = selectedMovie?.overview.toString(), style = MaterialTheme.typography.titleLarge)
         }
     }
 }
