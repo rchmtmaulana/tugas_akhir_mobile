@@ -77,7 +77,7 @@ class DetailActivity : ComponentActivity() {
                     )
 
                     Box(modifier = Modifier
-                        .background(Color.DarkGray, RoundedCornerShape(topStart = 16.dp, topEnd = 0.dp, bottomStart = 0.dp, bottomEnd = 0.dp))
+                        .background(Color.Gray, RoundedCornerShape(topStart = 16.dp, topEnd = 0.dp, bottomStart = 0.dp, bottomEnd = 0.dp))
                         .align(Alignment.BottomEnd)
                         .padding(12.dp)
                     ){
@@ -107,8 +107,6 @@ class DetailActivity : ComponentActivity() {
             Text(text = selectedMovie?.title.toString(), style = MaterialTheme.typography.displayLarge, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Release Date : ${selectedMovie?.release_date.toString()}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Vote Count : ${selectedMovie?.vote_count.toString()}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Popularity: ${selectedMovie?.popularity.toString().take(2)}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
