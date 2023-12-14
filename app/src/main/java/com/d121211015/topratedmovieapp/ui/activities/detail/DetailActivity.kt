@@ -53,7 +53,7 @@ class DetailActivity : ComponentActivity() {
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Movie Poster (Portrait)
+            // Movie Poster
             AsyncImage(
                 model = ImageRequest.Builder(context = LocalContext.current)
                     .data("https://image.tmdb.org/t/p/original" + selectedMovie?.poster_path)

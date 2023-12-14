@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                             title = {
                                 Text(
                                     text = "TOP RATED MOVIE LIST ALL TIME",
-                                    fontWeight = FontWeight.SemiBold,
+                                    fontWeight = FontWeight.ExtraBold
                                 )
                             }
                         )
@@ -109,7 +109,7 @@ class MainActivity : ComponentActivity() {
         Box(
             modifier = modifier
                 .padding(20.dp)
-                .border(2.dp, Color.DarkGray, RoundedCornerShape(12.dp),)
+                .border(2.dp, Color.Gray, RoundedCornerShape(12.dp),)
                 .size(width = 35.dp, height = 370.dp)
                 .clickable {
                     val intent = Intent(this, DetailActivity::class.java)
