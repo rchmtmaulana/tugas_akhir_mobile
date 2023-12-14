@@ -13,6 +13,6 @@ interface ApiService {
     @GET("3/movie/top_rated")
     suspend fun getMovies(
         @Query("language") language: String = "en-US",
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int = 1
     ): GetMovieResponse
 }

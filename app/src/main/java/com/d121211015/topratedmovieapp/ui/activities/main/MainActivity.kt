@@ -148,7 +148,7 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "Rating: ${result.vote_average.toString()} / 10", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+                Text(text = "Rating: ${result.vote_average.toString().take(3)}", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             }
         }
     }
