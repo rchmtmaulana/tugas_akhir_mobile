@@ -11,13 +11,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +35,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -89,19 +93,24 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MovieList(result: List<TopMovie>, modifier: Modifier = Modifier) {
-        LazyColumn(modifier = modifier) {
-            items(result) { result ->
-                ResultItem(result = result)
+        LazyVerticalGrid(columns = GridCells.Fixed(2)){
+            items(
+                items = result
+            ) {
+                result ->
+                ResultItem(result = result, modifier = Modifier.fillMaxSize())
             }
         }
+
     }
 
     @Composable
-    fun ResultItem(result: TopMovie) {
+    fun ResultItem(result: TopMovie, modifier: Modifier = Modifier) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .padding(20.dp)
                 .border(2.dp, Color.DarkGray, RoundedCornerShape(12.dp),)
+                .size(width = 35.dp, height = 370.dp)
                 .clickable {
                     val intent = Intent(this, DetailActivity::class.java)
                     intent.putExtra("MOVIE", result)
@@ -116,7 +125,7 @@ class MainActivity : ComponentActivity() {
 
                 AsyncImage(
                     model = ImageRequest.Builder(context = LocalContext.current)
-                        .data("https://image.tmdb.org/t/p/original" + result.backdrop_path)
+                        .data("https://image.tmdb.org/t/p/original" + result.poster_path)
                         .crossfade(true)
                         .build(), contentDescription = result.title,
                     modifier = Modifier
@@ -128,8 +137,10 @@ class MainActivity : ComponentActivity() {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = result.title,
-                    style = MaterialTheme.typography.displaySmall,
-                    fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -137,11 +148,7 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = result.overview,
-                    style = MaterialTheme.typography.titleSmall
-                )
-
+                Text(text = "Rating: ${result.vote_average.toString()} / 10", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             }
         }
     }

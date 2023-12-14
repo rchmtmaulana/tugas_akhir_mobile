@@ -36,7 +36,7 @@ class MainViewModel(private val moviesRepository: MovieRepository): ViewModel() 
         }
     }
 
-    // block yg prtama dipanggil ktika ini dibuka
+
     init {
         getMovies()
     }
